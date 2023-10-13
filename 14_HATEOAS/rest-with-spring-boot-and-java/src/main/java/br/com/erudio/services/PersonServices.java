@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import br.com.erudio.controllers.PersonController;
+import br.com.erudio.exceptions.RequiredObjectIsNullException;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -47,6 +48,7 @@ public class PersonServices {
 	
 	public PersonVO create(PersonVO person) {
 
+		if(person == null) throw new RequiredObjectIsNullException();
 		logger.info("Creating one person!");
 		var entity = DozerMapper.parseObject(person, Person.class);
 		var vo =  DozerMapper.parseObject(repository.save(entity), PersonVO.class);
@@ -55,7 +57,7 @@ public class PersonServices {
 	}
 	
 	public PersonVO update(PersonVO person) {
-		
+		if(person == null) throw new RequiredObjectIsNullException();
 		logger.info("Updating one person!");
 		
 		var entity = repository.findById(person.getKey())
