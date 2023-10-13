@@ -1,0 +1,5 @@
+08_ConnectingToMySQL/rest-with-spring-boot-and-java/src/main/resources/application.yml
+09_WorkingWithVOPattern/rest-with-spring-boot-and-java/src/main/resources/application.yml
+12_CustomSerialization/rest-with-spring-boot-and-java/pom.xml
+pom.xml
+*.yml
