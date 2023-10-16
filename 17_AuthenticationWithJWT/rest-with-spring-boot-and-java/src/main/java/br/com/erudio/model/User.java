@@ -158,38 +158,76 @@ public class User  implements UserDetails,Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User user)) return false;
-
-        if (getId() != null ? !getId().equals(user.getId()) : user.getId() != null) return false;
-        if (getUserName() != null ? !getUserName().equals(user.getUserName()) : user.getUserName() != null)
-            return false;
-        if (getFullName() != null ? !getFullName().equals(user.getFullName()) : user.getFullName() != null)
-            return false;
-        if (getPassword() != null ? !getPassword().equals(user.getPassword()) : user.getPassword() != null)
-            return false;
-        if (isAccountNonExpired() != null ? !isAccountNonExpired().equals(user.isAccountNonExpired()) : user.isAccountNonExpired() != null)
-            return false;
-        if (isAccountNonLocked() != null ? !isAccountNonLocked().equals(user.isAccountNonLocked()) : user.isAccountNonLocked() != null)
-            return false;
-        if (isCredentialsNonExpired() != null ? !isCredentialsNonExpired().equals(user.isCredentialsNonExpired()) : user.isCredentialsNonExpired() != null)
-            return false;
-        if (isEnabled() != null ? !isEnabled().equals(user.isEnabled()) : user.isEnabled() != null) return false;
-        return getPermissions() != null ? getPermissions().equals(user.getPermissions()) : user.getPermissions() == null;
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((accountNonExpired == null) ? 0 : accountNonExpired.hashCode());
+        result = prime * result + ((accountNonLocked == null) ? 0 : accountNonLocked.hashCode());
+        result = prime * result + ((credentialsNonExpired == null) ? 0 : credentialsNonExpired.hashCode());
+        result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
+        result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((permissions == null) ? 0 : permissions.hashCode());
+        result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getUserName() != null ? getUserName().hashCode() : 0);
-        result = 31 * result + (getFullName() != null ? getFullName().hashCode() : 0);
-        result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
-        result = 31 * result + (isAccountNonExpired() != null ? isAccountNonExpired().hashCode() : 0);
-        result = 31 * result + (isAccountNonLocked() != null ? isAccountNonLocked().hashCode() : 0);
-        result = 31 * result + (isCredentialsNonExpired() != null ? isCredentialsNonExpired().hashCode() : 0);
-        result = 31 * result + (isEnabled() != null ? isEnabled().hashCode() : 0);
-        result = 31 * result + (getPermissions() != null ? getPermissions().hashCode() : 0);
-        return result;
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        User other = (User) obj;
+        if (accountNonExpired == null) {
+            if (other.accountNonExpired != null)
+                return false;
+        } else if (!accountNonExpired.equals(other.accountNonExpired))
+            return false;
+        if (accountNonLocked == null) {
+            if (other.accountNonLocked != null)
+                return false;
+        } else if (!accountNonLocked.equals(other.accountNonLocked))
+            return false;
+        if (credentialsNonExpired == null) {
+            if (other.credentialsNonExpired != null)
+                return false;
+        } else if (!credentialsNonExpired.equals(other.credentialsNonExpired))
+            return false;
+        if (enabled == null) {
+            if (other.enabled != null)
+                return false;
+        } else if (!enabled.equals(other.enabled))
+            return false;
+        if (fullName == null) {
+            if (other.fullName != null)
+                return false;
+        } else if (!fullName.equals(other.fullName))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (password == null) {
+            if (other.password != null)
+                return false;
+        } else if (!password.equals(other.password))
+            return false;
+        if (permissions == null) {
+            if (other.permissions != null)
+                return false;
+        } else if (!permissions.equals(other.permissions))
+            return false;
+        if (userName == null) {
+            if (other.userName != null)
+                return false;
+        } else if (!userName.equals(other.userName))
+            return false;
+        return true;
     }
+
 }
